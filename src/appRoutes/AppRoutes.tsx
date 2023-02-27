@@ -11,7 +11,6 @@ const AppRoutes = () => {
       <Route path="/" element={<AddTodoPage />} />
       <Route path="/show-todos" element={<ShowTodoPage />} />
       <Route path="/favourites" element={<FavouritesPage />} />
-      {/* <Route path="/random" element={<Card />} /> */}
     </Routes>
   );
 };
