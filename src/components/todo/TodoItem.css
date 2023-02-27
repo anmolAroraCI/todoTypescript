@@ -1,0 +1,106 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+.todoitem {
+  background-color: #70a876;
+  background-color: #f1b323d0;
+  background-color: #e2aa28;
+  /*width: 22rem;
+  max-width: 23rem;*/
+  min-width: 10rem;
+
+  /*height: 20rem;*/
+   height: fit-content;
+  max-height: 19rem;
+
+  font-size: 16px;
+  color: blanchedalmond;
+  color: #000;
+  border: 4px solid green;
+  box-shadow: 1px 3px 8px #e0a10cd0;
+  border-radius: 10px;
+  margin: 2rem 2rem;
+  padding: 0.5rem 0.5rem;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow: scroll;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  --scrollbarBG: #000;
+  --thumbBG: #e2aa28;
+  scrollbar-width: 10px;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  letter-spacing: 2px;
+}
+
+.todoitem::-webkit-scrollbar {
+  width: 10px;
+}
+.todoitem::-webkit-scrollbar-track {
+  background-color: var(--scrollbarBG);
+}
+
+.todoitem::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 15px;
+  border: 3px solid var(--scrollbarBG);
+}
+.todoitem .todoHead {
+  display: flex;
+  flex-direction: column;
+}
+.todoitem .todo_actions {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-fav {
+  border-radius: 30px;
+  border: none;
+  border-color: #ffebcd;
+  background: transparent;
+  height: 100%;
+}
+.btn-fav:hover {
+  cursor: pointer;
+}
+.delete {
+  width: 50px;
+  height: 50px;
+  background: url("./../../assets/cross.svg") no-repeat;
+  display: inline-block;
+}
+.delete:hover {
+  background: url("./../../assets/cross_red.svg") no-repeat;
+  cursor: pointer;
+}
+.todoitem hr {
+  margin: 0 0;
+}
+.todoitem .date-time {
+  font-size: small;
+  display: flex;
+  justify-content: space-around;
+}
+.todoitem .date {
+  display: inline;
+}
+.todoitem .time {
+  display: inline;
+}
+.todoitem .title {
+cursor:pointer;
+  font-size: 3rem;
+  margin: 0 0;
+  text-align: center;
+}
+.todoitem .description {
+  font-size: 2rem;
+  text-align: justify;
+}
+.divider {
+  margin: 0;
+}
+.card-body {
+  padding: 0.5rem;
+}
+.expand{
+width:32rem;
+}

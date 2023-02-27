@@ -1,0 +1,65 @@
+.todo-container {
+    box-sizing: border-box;
+    max-width: 80rem;
+    margin: 5rem auto;
+    padding: 0.5rem 0.25rem;
+    background-color: #f5fbef;
+    color: black;
+    height: 40rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 4px 4px 6px rgb(99, 199, 112);
+  
+    display: flex;
+    /* word-break: break-all; */
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+  
+    --scrollbarBG: #f3f7f4;
+    --thumbBG: #2e3138;
+    scrollbar-width: 10px;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  
+  .todo-container::-webkit-scrollbar {
+    width: 10px;
+  }
+  .todo-container::-webkit-scrollbar-track {
+    background-color: var(--scrollbarBG);
+    border-radius: 10px;
+  }
+  
+  .todo-container::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 15px;
+    border: 3px solid var(--scrollbarBG);
+  }
+  .searchHeading{
+    margin: auto;
+    display: flex;
+    width: 70vw;
+    justify-content: space-between;
+    /* background-color: rgba(255,255,255,0.3); */
+    border: 1px solid #212121;
+    padding: 0.5rem;
+    color: #361D2E;
+    font-size: 20px;
+    color: #fff;
+
+  }
+  .search_close{
+    width: 50px;
+    height: 50px;
+    background: url("./../../assets/cross.svg") no-repeat;
+    display: inline-block;
+    margin: auto;
+    margin-right: 2px;
+  }
+  .search_close:hover {
+    background: url("./../../assets/cross_red.svg") no-repeat;
+    transform: scale(1.4);
+    border-radius: 60px;
+    transition: all .1s;
+    cursor: pointer;
+  }
