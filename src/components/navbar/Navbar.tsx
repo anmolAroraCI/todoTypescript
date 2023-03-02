@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import "./Navbar.css";
 import Badge from "../Badge/Badge";
 import { favTodoselector, todoSelector } from "../../domain/Todo/todoSlice";
@@ -11,13 +10,19 @@ const Navbar = () => {
   const allTodoArr = useSelector(todoSelector);
   const myFavArr = useSelector(favTodoselector);
   const burgerRef = useRef<HTMLDivElement>(null);
-
+  const menuRef = useRef<HTMLDivElement>(null);
   function burgerClassToggle() {
     const burger = burgerRef.current;
     if (!burger) {
       return;
     }
     burger.classList.toggle("active");
+
+    let navTabs = menuRef.current;
+    if (!navTabs) {
+      return;
+    }
+    navTabs.classList.toggle("active");
   }
   return (
     <div className="header">
@@ -25,7 +30,7 @@ const Navbar = () => {
         <div className="logo">
           <Link to="/">My Todos</Link>
         </div>
-        <div className="nav-tabs">
+        <div className="nav-tabs" ref={menuRef}>
           <ul>
             <li>
               <Link

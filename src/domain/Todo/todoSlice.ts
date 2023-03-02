@@ -1,6 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import { TodoState } from "./types";
+import { Todo, TodoState } from "./types";
 
 const initialAllTodoState: TodoState = {
   allTodos: [],
@@ -9,15 +9,14 @@ const todoSlice = createSlice({
   name: "todo",
   initialState: initialAllTodoState,
   reducers: {
-    add(state, action) {
+    add(state, action: PayloadAction<Todo>) {
       state.allTodos.unshift(action.payload);
     },
-    delete(state, action) {
+    delete(state, action: PayloadAction<string>) {
       const newArr = state.allTodos.filter(
         (item) => item.id !== action.payload
       );
       state.allTodos = newArr;
-
     },
     addFavourite(state, action: PayloadAction<string>) {
       let id = action.payload;
@@ -28,7 +27,7 @@ const todoSlice = createSlice({
         return todo;
       });
     },
-    removeFavourite(state, action:PayloadAction<string>) {
+    removeFavourite(state, action: PayloadAction<string>) {
       let id = action.payload;
 
       state.allTodos = state.allTodos.map((todo) => {

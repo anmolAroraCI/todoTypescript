@@ -7,6 +7,8 @@ import { Todo } from "../../domain/Todo/types";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { todoActions } from "../../domain/Todo/todoSlice";
+import down from "./../../assets/down.svg";
+import up from "./../../assets/up.svg";
 
 function TodoItem(props: Todo) {
   const isFavourite = props.isFavourite;
@@ -16,6 +18,7 @@ function TodoItem(props: Todo) {
   var dd = String(today.getDate()).padStart(2, "0");
   var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = today.getFullYear();
+  yyyy = parseInt(yyyy.toString().slice(2));
   var hr = today.getHours();
   var min = today.getMinutes();
   var sec = today.getSeconds();
@@ -88,9 +91,15 @@ function TodoItem(props: Todo) {
         layout
         onClick={() => setIsOpen(!isOpen)}
       >
-        <motion.h3 layout="position" className="title card-title">
-          {props.title}
-        </motion.h3>
+        <motion.div className="card-header">
+          <motion.h3 layout="position" className="title card-title">
+            {props.title}
+          </motion.h3>
+          <motion.div className="more-info">
+            {isOpen ? <motion.img src={up} /> : <motion.img src={down} />}
+          </motion.div>
+        </motion.div>
+
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}

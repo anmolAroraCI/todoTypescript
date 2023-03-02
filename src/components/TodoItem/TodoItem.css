@@ -4,6 +4,7 @@
   background-color: #f1b323d0;
   background-color: #e2aa28;
   min-width: 10rem;
+  max-width: 32rem;
   height: fit-content;
   max-height: 19rem;
 
@@ -70,7 +71,7 @@
   margin: 0 0;
 }
 .todoitem .date-time {
-  font-size: small;
+  font-size: 14px;
   display: flex;
   justify-content: space-around;
 }
@@ -80,11 +81,29 @@
 .todoitem .time {
   display: inline;
 }
+.todoitem .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .todoitem .title {
+  max-width: 20rem;
+  /* overflow-y:hidden; */
+  overflow:hidden;
+  /* overflow-y:hidden; */
   cursor: pointer;
   font-size: 3rem;
   margin: 0 0;
   text-align: center;
+  /* word-wrap: break-all; */
+  padding: 0.5rem;
+}
+.todoitem .more-info {
+  cursor: pointer;
+  height: 31px;
+  width: 31px;
+  background: rgba(245, 251, 239, 0.8);
+  border-radius: 5px;
 }
 .todoitem .description {
   font-size: 2rem;
@@ -95,6 +114,7 @@
 }
 .card-body {
   padding: 0.5rem;
+  cursor: pointer;
 }
 .expand {
   width: 32rem;

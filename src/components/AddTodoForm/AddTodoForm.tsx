@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import heartfill from "./../../assets/heartfill.svg";
 import heartblank from "./../../assets/heartblank.svg";
 import { v4 as uuidv4 } from "uuid";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Heading from "../Heading/Heading";
 import { todoActions } from "../../domain/Todo/todoSlice";
@@ -13,7 +13,6 @@ function AddTodoForm() {
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const [enteredFavouriteStatus, setEnteredFavouriteStatus] = useState(false);
 
@@ -36,9 +35,6 @@ function AddTodoForm() {
       toast.success(`${newTodoObj.title} Todo added`);
     }
   }
-  const favouriteHandler = () => {
-    setEnteredFavouriteStatus(!enteredFavouriteStatus);
-  };
 
   return (
     <>
@@ -74,7 +70,10 @@ function AddTodoForm() {
             className="tooltip tooltip-bottom tooltip-error"
             data-tip="Favourite"
           >
-            <button className="btn-fav" onClick={favouriteHandler}>
+            <button
+              className="btn-fav"
+              onClick={() => setEnteredFavouriteStatus(!enteredFavouriteStatus)}
+            >
               {enteredFavouriteStatus ? (
                 <img
                   src={heartfill}
