@@ -1,5 +1,5 @@
 import Heading from "../../components/Heading/Heading";
-import ShowFavouriteList from "../../components/todo/ShowFavouriteList";
+import ShowFavouriteList from "../../components/ShowFavouriteList/ShowFavouriteList";
 const FavouritesPage = () => {
   return (
     <div style={{ color: "white" }}>

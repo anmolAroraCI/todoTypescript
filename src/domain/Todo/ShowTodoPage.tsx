@@ -1,8 +1,9 @@
-import ShowTodoList from "../../components/todo/ShowTodoList";
+import ShowTodoList from "../../components/ShowTodolist/ShowTodoList";
+
 const ShowTodoPage = () => {
   return (
     <div style={{ color: "white" }}>
-      <ShowTodoList />
+      <ShowTodoList/>
     </div>
   );
 };

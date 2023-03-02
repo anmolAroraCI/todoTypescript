@@ -1,9 +1,9 @@
-import AddTodoForm from "../../components/todo/AddTodoForm";
+import AddTodoForm from "../../components/AddTodoForm/AddTodoForm";
 
 const AddTodoPage = (): JSX.Element => {
   return (
     <div>
-      <AddTodoForm />
+      <AddTodoForm/>
     </div>
   );
 };

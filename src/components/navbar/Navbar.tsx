@@ -1,28 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import "./Navbar.css";
 import Badge from "../Badge/Badge";
 import { favTodoselector, todoSelector } from "../../domain/Todo/todoSlice";
 
 const Navbar = () => {
-  const [active, setActive] = useState("link-add");
-
+  const { pathname } = useLocation();
   const allTodoArr = useSelector(todoSelector);
   const myFavArr = useSelector(favTodoselector);
+  const burgerRef = useRef<HTMLDivElement>(null);
 
-  function linkClickHandler(e: React.MouseEvent<HTMLElement>) {
-    setActive((e.target as HTMLInputElement).id);
-    let burger = document.getElementsByClassName("burger-icon")[0];
-    let navTabs = document.querySelector(".nav-tabs")!;
+  function burgerClassToggle() {
+    const burger = burgerRef.current;
+    if (!burger) {
+      return;
+    }
     burger.classList.toggle("active");
-    navTabs.classList.toggle("active");
-  }
-  function burgerClickHandler() {
-    let burger = document.getElementsByClassName("burger-icon")[0];
-    let navTabs = document.querySelector(".nav-tabs")!;
-    burger.classList.toggle("active");
-    navTabs.classList.toggle("active");
   }
   return (
     <div className="header">
@@ -36,8 +31,7 @@ const Navbar = () => {
               <Link
                 to="/"
                 id="link-add"
-                className={active === "link-add" ? "active" : "Inactive"}
-                onClick={linkClickHandler}
+                className={pathname === "/" ? "active" : "Inactive"}
               >
                 Add a Todo
               </Link>
@@ -46,8 +40,7 @@ const Navbar = () => {
               <Link
                 to="/show-todos"
                 id="link-show"
-                className={active === "link-show" ? "active" : "Inactive"}
-                onClick={linkClickHandler}
+                className={pathname === "/show-todos" ? "active" : "Inactive"}
               >
                 Show Todos
               </Link>
@@ -57,8 +50,7 @@ const Navbar = () => {
               <Link
                 to="/favourites"
                 id="link-fav"
-                className={active === "link-fav" ? "active" : "Inactive"}
-                onClick={linkClickHandler}
+                className={pathname === "/favourites" ? "active" : "Inactive"}
               >
                 Favourites
               </Link>
@@ -67,7 +59,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="menu">
-          <div className="burger-icon" onClick={burgerClickHandler}>
+          <div
+            className="burger-icon"
+            ref={burgerRef}
+            onClick={burgerClassToggle}
+          >
             <div className="line-1"></div>
             <div className="line-2"></div>
             <div className="line-3"></div>

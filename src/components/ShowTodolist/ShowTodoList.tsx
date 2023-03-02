@@ -1,9 +1,9 @@
 import "./ShowTodoList.css";
-import TodoItem from "./TodoItem";
 import { useSelector } from "react-redux";
 import { RootState } from "./../../store/store";
 import EmptyMessage from "../EmptyMessage/EmptyMessage";
 import Heading from "../Heading/Heading";
+import TodoItem from "../TodoItem/TodoItem";
 
 function ShowTodoList() {
   let allTodoArr = useSelector((state: RootState) => state.allTodos);

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import TodoItem from "./TodoItem";
 import EmptyMessage from "../EmptyMessage/EmptyMessage";
 import { favTodoselector } from "../../domain/Todo/todoSlice";
+import TodoItem from "../TodoItem/TodoItem";
 
 const ShowFavouriteList = () => {
   const favTodoArr = useSelector(favTodoselector);
