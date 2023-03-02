@@ -52,6 +52,7 @@ const todoSlice = createSlice({
     setSearchTodo(state, action) {
       state.searchTodo = action.payload;
     },
+    
   },
 });
 
