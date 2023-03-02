@@ -6,16 +6,6 @@ export type Todo = {
   date:string
 };
 
-// export type DefaultLoadingStatus =
-//   | "not loaded"
-//   | "loading"
-//   | "loaded"
-//   | "error";
-// export type DefaultLoadingState = {
-//   loading: DefaultLoadingStatus;
-//   error?: string;
-// };
-
 export type TodoState = {
   allTodos: Todo[];
   searchTodo: Todo[];

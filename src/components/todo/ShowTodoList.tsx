@@ -2,19 +2,23 @@ import "./ShowTodoList.css";
 import TodoItem from "./TodoItem";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, todoActions } from "./../../store/store";
-import useHeading from "../../hooks/use-heading";
+import Heading from "../ui/Heading";
 import EmptyMessage from "../../util/use-emptyMessage";
 
 function ShowTodoList() {
-  let allTodoArr = useSelector((state:RootState) => state.todoReducer.allTodos);
-  let searchTodoArr = useSelector((state:RootState) => state.todoReducer.searchTodo);
-  let showSearchResult = useSelector(
-    (state:RootState) => state.todoReducer.showSearchResult
+  let allTodoArr = useSelector(
+    (state: RootState) => state.todoReducer.allTodos
   );
-  
+  let searchTodoArr = useSelector(
+    (state: RootState) => state.todoReducer.searchTodo
+  );
+  let showSearchResult = useSelector(
+    (state: RootState) => state.todoReducer.showSearchResult
+  );
+
   const dispatch = useDispatch();
 
-  const todoDeleteHandler = (id:string) => {
+  const todoDeleteHandler = (id: string) => {
     dispatch(todoActions.delete(id));
   };
   const searchCloseHandler = () => {
@@ -24,7 +28,7 @@ function ShowTodoList() {
 
   return (
     <>
-      {useHeading("My Todos")}
+      <Heading heading="Show todo" />
       {showSearchResult && (
         <div className="searchHeading font-white-200 text-lg font-bold mt-2 rounded-full border-2 border-white-200">
           <h2>Showing search result...</h2>

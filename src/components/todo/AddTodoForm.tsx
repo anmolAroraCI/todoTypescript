@@ -6,9 +6,8 @@ import heartblank from "./../../assets/heartblank.svg";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, todoActions } from "./../../store/store";
-import useHeading from "../../hooks/use-heading";
+import Heading from "../ui/Heading";
 import { toast } from "react-toastify";
-import { motion } from "framer-motion"
 // import Radium, { StyleRoot } from "radium";
 
 function AddTodoForm() {
@@ -16,7 +15,6 @@ function AddTodoForm() {
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const navigate = useNavigate();
 
-  const todoArr = useSelector((state: RootState) => state.todoReducer.allTodos);
   const dispatch = useDispatch();
   const [enteredFavouriteStatus, setEnteredFavouriteStatus] = useState(false);
 
@@ -56,7 +54,7 @@ function AddTodoForm() {
 
   return (
     <>
-      {useHeading("Add TODO")}
+      <Heading heading="Add Todo" />
       <div className="AddTodo">
         <h2>Add a todo</h2>
         <form id="my-form">
@@ -92,7 +90,10 @@ function AddTodoForm() {
           </div>
         </form>
         <div className="controls">
-          <div className="tooltip tooltip-bottom tooltip-error" data-tip="Favourite">
+          <div
+            className="tooltip tooltip-bottom tooltip-error"
+            data-tip="Favourite"
+          >
             <button className="btn-fav" onClick={favouriteHandler}>
               {enteredFavouriteStatus ? (
                 <img

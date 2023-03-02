@@ -1,4 +1,7 @@
-const useHeading = (heading:string):JSX.Element => {
+type HeadingProps = {
+  heading: string;
+};
+const Heading = ({ heading }: HeadingProps): JSX.Element => {
   return (
     <>
       <h3
@@ -16,4 +19,4 @@ const useHeading = (heading:string):JSX.Element => {
     </>
   );
 };
-export default useHeading;
+export default Heading;

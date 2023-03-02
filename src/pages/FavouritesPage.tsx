@@ -1,9 +1,9 @@
-import useHeading from "../hooks/use-heading";
+import Heading from "../components/ui/Heading";
 import ShowFavouriteList from "../components/todo/ShowFavouriteList";
 const FavouritesPage = () => {
   return (
     <div style={{ color: "white" }}>
-      {useHeading("Favourites")}
+      <Heading heading="Favourites" />
       <ShowFavouriteList />
     </div>
   );
