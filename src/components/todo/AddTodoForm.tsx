@@ -34,21 +34,10 @@ function AddTodoForm() {
     if ((enteredTitle && enteredDescription) || enteredTitle) {
       dispatch(todoActions.add(newTodoObj));
       toast.success(`${newTodoObj.title} Todo added`);
-
-      if (enteredFavouriteStatus) {
-        dispatch(todoActions.addFavourite(newTodoObj));
-      } else {
-        dispatch(todoActions.removeFavourite(newTodoObj.id));
-      }
     }
   }
   const favouriteHandler = () => {
     setEnteredFavouriteStatus(!enteredFavouriteStatus);
-    if (enteredFavouriteStatus) {
-      toast.info("favourite removed");
-    } else {
-      toast.info("favourite added");
-    }
   };
 
   return (

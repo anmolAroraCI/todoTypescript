@@ -5,14 +5,17 @@ import { RootState } from "../../store/store";
 import "./Navbar.css";
 import { toast } from "react-toastify";
 import Badge from "../Badge/badge";
-import { todoActions } from "../../domain/Todo/todoSlice";
+import {
+  favTodoselector,
+  todoActions,
+  todoSelector,
+} from "../../domain/Todo/todoSlice";
 
 const Navbar = () => {
   const [active, setActive] = useState("link-add");
-  const allTodoArr = useSelector(
-    (state: RootState) => state.allTodos
-  );
-  const myFavArr = useSelector((state: RootState) => state.favTodo);
+
+  const allTodoArr = useSelector(todoSelector);
+  const myFavArr = useSelector(favTodoselector);
   const showSearchResult = useSelector(
     (state: RootState) => state.showSearchResult
   );
@@ -40,7 +43,6 @@ const Navbar = () => {
       console.log(searchArr);
       dispatch(todoActions.setSearchTodo(searchArr));
     } else {
-      // alert("Invalid Search content");
       toast.error("enter some search content");
     }
     searchInputRef.current!.value = "";

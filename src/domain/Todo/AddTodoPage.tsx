@@ -1,4 +1,3 @@
-import React from "react";
 import AddTodoForm from "../../components/todo/AddTodoForm";
 
 const AddTodoPage = (): JSX.Element => {

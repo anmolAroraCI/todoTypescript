@@ -1,4 +1,3 @@
-import React from "react";
 import ShowTodoList from "../../components/todo/ShowTodoList";
 const ShowTodoPage = () => {
   return (

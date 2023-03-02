@@ -3,18 +3,16 @@ import heartfill from "./../../assets/heartfill.svg";
 import heartblank from "./../../assets/heartblank.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { myItem } from "../../domain/Todo/types";
+import { Todo } from "../../domain/Todo/types";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { todoActions } from "../../domain/Todo/todoSlice";
 
-function TodoItem(props: myItem) {
-  const [enteredFavouriteStatus, setEnteredFavouriteStatus] = useState(
-    props.todoObj.isFavourite
-  );
+function TodoItem(props: Todo) {
+  const isFavourite = props.isFavourite;
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-  var today = new Date(JSON.parse(props.todoObj.date));
+  var today = new Date(JSON.parse(props.date));
   var dd = String(today.getDate()).padStart(2, "0");
   var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = today.getFullYear();
@@ -25,34 +23,30 @@ function TodoItem(props: myItem) {
   let myDate = mm + "/" + dd + "/" + yyyy;
 
   const favouriteHandler = () => {
-    if (enteredFavouriteStatus) {
-      setEnteredFavouriteStatus(false);
-      dispatch(todoActions.removeFavourite(props.todoObj.id));
-      dispatch(todoActions.removeFavouriteStatus(props.todoObj.id));
+    if (isFavourite) {
+      dispatch(todoActions.removeFavourite(props.id));
       toast.info("favourite removed", {
         autoClose: 500,
         hideProgressBar: true,
       });
-    } else if (!enteredFavouriteStatus) {
-      setEnteredFavouriteStatus(true);
-      dispatch(todoActions.addFavourite(props.todoObj));
-      dispatch(todoActions.setFavouriteStatus(props.todoObj.id));
-      toast.info("favourite added", {
-        autoClose: 500,
-        hideProgressBar: true,
-      });
+      return;
     }
+    dispatch(todoActions.addFavourite(props.id));
+    toast.info("favourite added", {
+      autoClose: 500,
+      hideProgressBar: true,
+    });
   };
+
   function todoDeleteHandler() {
-    props.todoDelete(props.todoObj.id);
-    toast.error(`${props.todoObj.title} deleted`);
+    dispatch(todoActions.delete(props.id));
+    toast.error(`${props.title} deleted`);
   }
   return (
     <motion.div
       className="todoitem"
       transition={{ layout: { duration: 0.75, type: "spring" } }}
       layout
-      // onClick={() => setIsOpen(!isOpen)}
       style={{
         borderRadius: "1rem",
         boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
@@ -64,18 +58,16 @@ function TodoItem(props: myItem) {
           <div className="time">{time}</div>
         </div>
         <div className="todo_actions ">
-          {/* <div className="tooltip tooltip-top " data-tip="Favourite"> */}
-          {/* tooltip cant be added since menu is hiding under it */}
           <div className="" data-tip="Favourite">
             <button className="btn-fav" onClick={favouriteHandler}>
-              {enteredFavouriteStatus && (
+              {isFavourite && (
                 <img
                   src={heartfill}
                   style={{ width: "55x", height: "55px" }}
                   alt=""
                 />
               )}
-              {!enteredFavouriteStatus && (
+              {!isFavourite && (
                 <img
                   src={heartblank}
                   alt=""
@@ -84,13 +76,11 @@ function TodoItem(props: myItem) {
               )}
             </button>
           </div>
-          {/* <div className="tooltip tooltip-top tooltip-error" data-tip="Delete"> */}
           <div className="" data-tip="Delete">
             <button className="delete" onClick={todoDeleteHandler}></button>
           </div>
         </div>
       </div>
-      {/* <hr /> */}
       <div className="divider"></div>
       <motion.div
         className="card-body"
@@ -99,7 +89,7 @@ function TodoItem(props: myItem) {
         onClick={() => setIsOpen(!isOpen)}
       >
         <motion.h3 layout="position" className="title card-title">
-          {props.todoObj.title}
+          {props.title}
         </motion.h3>
         {isOpen && (
           <motion.div
@@ -108,7 +98,7 @@ function TodoItem(props: myItem) {
             className="expand"
             transition={{ duration: 1 }}
           >
-            <p className="description">{props.todoObj.details}</p>
+            <p className="description">{props.details}</p>
           </motion.div>
         )}
       </motion.div>

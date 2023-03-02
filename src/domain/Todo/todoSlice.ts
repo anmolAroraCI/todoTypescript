@@ -1,10 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
 import { TodoState } from "./types";
 
 const initialAllTodoState: TodoState = {
   allTodos: [],
-  favTodo: [],
   showSearchResult: false,
   searchTodo: [],
 };
@@ -16,7 +15,6 @@ const todoSlice = createSlice({
       state.allTodos.unshift(action.payload);
     },
     delete(state, action) {
-      // delete from allTodo Array
       const newArr = state.allTodos.filter(
         (item) => item.id !== action.payload
       );
@@ -28,41 +26,25 @@ const todoSlice = createSlice({
       );
       state.searchTodo = newArr2;
 
-      // delete from favTodo Array
-      const newArr3 = state.favTodo.filter(
-        (item) => item.id !== action.payload
-      );
-      state.favTodo = newArr3;
     },
-    addFavourite(state, action) {
-      state.favTodo.unshift(action.payload);
-
-      //add favourite status in All todo
-      let id = action.payload.id;
-      for (let i = 0; i < state.allTodos.length; i++) {
-        if (state.allTodos[i].id === id) state.allTodos[i].isFavourite = true;
-      }
-    },
-    removeFavourite(state, action) {
-      const newArr = state.favTodo.filter((item) => item.id !== action.payload);
-      state.favTodo = newArr;
-      //remove favourite status in All todo
+    addFavourite(state, action: PayloadAction<string>) {
       let id = action.payload;
-      for (let i = 0; i < state.allTodos.length; i++) {
-        if (state.allTodos[i].id === id) state.allTodos[i].isFavourite = false;
-      }
+      state.allTodos = state.allTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isFavourite: true };
+        }
+        return todo;
+      });
     },
-    setFavouriteStatus(state, action) {
-      var id = action.payload;
-      for (let i = 0; i < state.favTodo.length; i++) {
-        if (state.favTodo[i].id === id) state.favTodo[i].isFavourite = true;
-      }
-    },
-    removeFavouriteStatus(state, action) {
-      var id = action.payload;
-      for (let i = 0; i < state.favTodo.length; i++) {
-        if (state.favTodo[i].id === id) state.favTodo[i].isFavourite = false;
-      }
+    removeFavourite(state, action:PayloadAction<string>) {
+      let id = action.payload;
+
+      state.allTodos = state.allTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isFavourite: false };
+        }
+        return todo;
+      });
     },
     toggleSearchResult(state) {
       state.showSearchResult = !state.showSearchResult;
@@ -76,3 +58,7 @@ const todoSlice = createSlice({
 export const todoReducer = todoSlice.reducer;
 export const todoActions = todoSlice.actions;
 export const todoSelector = (state: RootState) => state.allTodos;
+export const favTodoselector = createSelector(
+  (state: RootState) => state.allTodos,
+  (todos) => todos.filter((todo) => todo.isFavourite)
+);

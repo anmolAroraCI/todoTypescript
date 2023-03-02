@@ -7,21 +7,14 @@ import Heading from "../Heading/Heading";
 import { todoActions } from "../../domain/Todo/todoSlice";
 
 function ShowTodoList() {
-  let allTodoArr = useSelector(
-    (state: RootState) => state.allTodos
-  );
-  let searchTodoArr = useSelector(
-    (state: RootState) => state.searchTodo
-  );
+  let allTodoArr = useSelector((state: RootState) => state.allTodos);
+  let searchTodoArr = useSelector((state: RootState) => state.searchTodo);
   let showSearchResult = useSelector(
     (state: RootState) => state.showSearchResult
   );
 
   const dispatch = useDispatch();
-
-  const todoDeleteHandler = (id: string) => {
-    dispatch(todoActions.delete(id));
-  };
+  
   const searchCloseHandler = () => {
     dispatch(todoActions.toggleSearchResult());
     searchTodoArr = [];
@@ -45,13 +38,7 @@ function ShowTodoList() {
         )}
         {showSearchResult &&
           searchTodoArr.map((item) => {
-            return (
-              <TodoItem
-                key={item.id}
-                todoObj={item}
-                todoDelete={todoDeleteHandler}
-              />
-            );
+            return <TodoItem key={item.id} {...item} />;
           })}
         {!showSearchResult && allTodoArr.length === 0 && (
           <EmptyMessage
@@ -60,14 +47,8 @@ function ShowTodoList() {
           />
         )}
         {!showSearchResult &&
-          allTodoArr.map((item) => {
-            return (
-              <TodoItem
-                key={item.id}
-                todoObj={item}
-                todoDelete={todoDeleteHandler}
-              />
-            );
+          allTodoArr.map((todo) => {
+            return <TodoItem key={todo.id} {...todo} />;
           })}
       </div>
     </>

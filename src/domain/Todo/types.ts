@@ -10,11 +10,4 @@ export type TodoState = {
   allTodos: Todo[];
   searchTodo: Todo[];
   showSearchResult: boolean;
-  favTodo: Todo[];
-};
-
-export type myItem = {
-  key: string;
-  todoObj: Todo;
-  todoDelete: (id: string) => void;
 };

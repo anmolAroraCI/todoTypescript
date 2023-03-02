@@ -3,7 +3,6 @@
 .AddTodo {
   display: flex;
   flex-direction: column;
-  /* width: 30rem; */
   height: 40rem;
   max-width: 600px;
   align-items: center;
@@ -14,7 +13,6 @@
   background-color: #f1b323d0;
   border-radius: 10px;
   border: 2px solid #f7b757;
-  /* box-sizing: border-box; */
 }
 .AddTodo .head .body {
   display: block;
@@ -40,7 +38,6 @@
   font-size: 1.75rem;
   letter-spacing: 2px;
   outline: none;
-  /* background-color: #fad19586; */
 }
 .AddTodo textarea {
   color: black;
@@ -55,8 +52,6 @@
 }
 .AddTodo .controls {
   display: flex;
-  /* margin: auto; */
-  /* margin-top: 20px; */
   line-height: 4rem;
   justify-content: space-between;
   align-items: center;
@@ -66,18 +61,14 @@
   font-size: 1.5rem;
 }
 .AddTodo .tooltip {
-/* margin-top: 10px; */
 padding-top: 12px;
-bottom: 0;;
+bottom: 0;
 }
 .AddTodo .controls i {
   font-size: 3rem;
   cursor: pointer;
-  /* justify-content: space-between; */
-  /* align-items: center; */
   height: 100%;
   place-self: center;
-  /* width: 100%; */
 }
 .AddTodo .controls i:hover ~ i {
   color: red;
