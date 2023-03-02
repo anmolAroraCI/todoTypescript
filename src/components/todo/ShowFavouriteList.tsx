@@ -1,14 +1,14 @@
 import React from "react";
 import { RootState } from "../../store/store";
 import { useSelector, useDispatch } from "react-redux";
-import { todoActions } from "../../store/store";
 import TodoItem from "./TodoItem";
-import EmptyMessage from "../../util/use-emptyMessage";
+import EmptyMessage from "../EmptyMessage/EmptyMessage";
 import "./ShowFavouriteList.css";
+import { todoActions } from "../../domain/Todo/todoSlice";
 
 const ShowFavouriteList = () => {
   const favTodoArr = useSelector(
-    (state: RootState) => state.todoReducer.favTodo
+    (state: RootState) => state.favTodo
   );
   // let showSearchResult = useSelector((state)=>state.todoReducer.showSearchResult);
 

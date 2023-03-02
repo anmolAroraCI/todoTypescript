@@ -1,19 +1,20 @@
 import "./ShowTodoList.css";
 import TodoItem from "./TodoItem";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, todoActions } from "./../../store/store";
-import Heading from "../ui/Heading";
-import EmptyMessage from "../../util/use-emptyMessage";
+import { RootState } from "./../../store/store";
+import EmptyMessage from "../EmptyMessage/EmptyMessage";
+import Heading from "../Heading/Heading";
+import { todoActions } from "../../domain/Todo/todoSlice";
 
 function ShowTodoList() {
   let allTodoArr = useSelector(
-    (state: RootState) => state.todoReducer.allTodos
+    (state: RootState) => state.allTodos
   );
   let searchTodoArr = useSelector(
-    (state: RootState) => state.todoReducer.searchTodo
+    (state: RootState) => state.searchTodo
   );
   let showSearchResult = useSelector(
-    (state: RootState) => state.todoReducer.showSearchResult
+    (state: RootState) => state.showSearchResult
   );
 
   const dispatch = useDispatch();

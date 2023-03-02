@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
-
-const EmptyMessage = ({message,shortmessage}) => {
-  // const allTodoArr = useSelector((state) => state.todoReducer.allTodo);
-
+type EmptyMessageProps = {
+  message: string;
+  shortmessage: string;
+};
+const EmptyMessage = ({ message, shortmessage }: EmptyMessageProps) => {
   return (
     <>
-      {(
+      {
         <p style={{ fontWeight: "bold", margin: "auto", fontSize: "4rem" }}>
           {message}
           <br />
@@ -13,7 +13,7 @@ const EmptyMessage = ({message,shortmessage}) => {
             {shortmessage}
           </span>
         </p>
-      )}
+      }
     </>
   );
 };

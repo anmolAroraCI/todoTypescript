@@ -1,6 +1,6 @@
 import "./App.css";
 import AppRoutes from "./appRoutes/AppRoutes";
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 
 
 function App() {

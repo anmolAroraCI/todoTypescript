@@ -1,20 +1,20 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { todoActions } from "../../store/store";
 import { RootState } from "../../store/store";
 import "./Navbar.css";
-import Badge from "../ui/badge";
 import { toast } from "react-toastify";
+import Badge from "../Badge/badge";
+import { todoActions } from "../../domain/Todo/todoSlice";
 
 const Navbar = () => {
   const [active, setActive] = useState("link-add");
   const allTodoArr = useSelector(
-    (state: RootState) => state.todoReducer.allTodos
+    (state: RootState) => state.allTodos
   );
-  const myFavArr = useSelector((state: RootState) => state.todoReducer.favTodo);
+  const myFavArr = useSelector((state: RootState) => state.favTodo);
   const showSearchResult = useSelector(
-    (state: RootState) => state.todoReducer.showSearchResult
+    (state: RootState) => state.showSearchResult
   );
   const dispatch = useDispatch();
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +58,6 @@ const Navbar = () => {
     let navTabs = document.querySelector(".nav-tabs")!;
     burger.classList.toggle("active");
     navTabs.classList.toggle("active");
-    // console.log(burger.classList.value)
   }
   return (
     <div className="header">
@@ -66,11 +65,6 @@ const Navbar = () => {
         <div className="logo">
           <Link to="/">My Todos</Link>
         </div>
-        {/* <div className="tabs tabs-boxed">
-          <a className="tab tab-bordered">Tab 1</a>
-          <a className="tab tab-bordered tab-active">Tab 2</a>
-          <a className="tab tab-bordered">Tab 3</a>
-        </div> */}
         <div className="nav-tabs">
           <ul>
             <li>

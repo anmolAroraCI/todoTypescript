@@ -1,9 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Card from "../components/ui/Card";
-import AddTodoPage from "../pages/AddTodoPage";
-import FavouritesPage from "../pages/FavouritesPage";
-import ShowTodoPage from "../pages/ShowTodoPage";
+import AddTodoPage from "../domain/Todo/AddTodoPage";
+import FavouritesPage from "../domain/Todo/FavouritesPage";
+import ShowTodoPage from "../domain/Todo/ShowTodoPage";
 
 const AppRoutes = () => {
   return (

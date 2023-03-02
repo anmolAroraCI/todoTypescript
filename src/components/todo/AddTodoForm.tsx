@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import heartfill from "./../../assets/heartfill.svg";
 import heartblank from "./../../assets/heartblank.svg";
 import { v4 as uuidv4 } from "uuid";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, todoActions } from "./../../store/store";
-import Heading from "../ui/Heading";
+import {  useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-// import Radium, { StyleRoot } from "radium";
+import Heading from "../Heading/Heading";
+import { todoActions } from "../../domain/Todo/todoSlice";
 
 function AddTodoForm() {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -60,14 +59,6 @@ function AddTodoForm() {
         <form id="my-form">
           <div className="head">
             <label htmlFor="title">Title</label>
-            {/* <input
-              type="text"
-              placeholder="Type here"
-              className="input w-full max-w-xs"
-              id="title"
-              ref={titleRef}
-              required
-            /> */}
             <input
               className="input-title"
               id="title"

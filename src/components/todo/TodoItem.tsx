@@ -3,10 +3,10 @@ import heartfill from "./../../assets/heartfill.svg";
 import heartblank from "./../../assets/heartblank.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { todoActions } from "../../store/store";
-import { myItem } from "./../../types/types";
+import { myItem } from "../../domain/Todo/types";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { todoActions } from "../../domain/Todo/todoSlice";
 
 function TodoItem(props: myItem) {
   const [enteredFavouriteStatus, setEnteredFavouriteStatus] = useState(
