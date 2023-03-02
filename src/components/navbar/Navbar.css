@@ -43,7 +43,7 @@ nav .nav-tabs ul li a.active {
   color: aquamarine;
 }
 
-nav .search {
+nav .menu {
   margin: 0 1rem;
   position: relative;
   color: black;
@@ -62,19 +62,6 @@ nav .burger-icon > div {
   transition: all ease-out 0.4s;
 }
 
-nav .search input {
-  padding: 0.75rem;
-  border-radius: 10px;
-  font: inherit;
-  font-size: 1.25rem;
-  outline: none;
-}
-nav .search i {
-  font-size: 2rem;
-}
-nav .search i:hover {
-  cursor: pointer;
-}
 a .Inactive {
   color: #2e3138;
 }
@@ -118,9 +105,7 @@ a .Inactive {
   .active ul{
     z-index: 20;
   }
-  .nav-tabs,
-  .search input,
-  .search .fa {
+  .nav-tabs {
     position: fixed;
     left: -200%;
     top: 70px;
@@ -132,36 +117,14 @@ a .Inactive {
     text-align: center;
     transition: 0.3s;
   }
-  .search input,
-  .search .fa {
-    width: fit-content;
-  }
   .nav-tabs > ul > li {
     margin: 16px 0;
   }
-  .nav-tabs.active + .search {
+  .nav-tabs.active + .menu {
     display: flex;
     flex-direction: row !important;
   }
-  .nav-tabs.active + .search .fa,
-  .nav-tabs.active + .search input {
-    top: 20px;
-  }
 
-  .nav-tabs.active + .search .fa {
-    top: 430px;
-    left: calc(50% + 130px);
-    background-color: #709176;
-
-    line-height: 100%;
-  }
-  .nav-tabs.active + .search input {
-    left: 50%;
-    transform: translateX(-50%);
-    top: 427px;
-    background-color: #709176;
-    color: black;
-  }
   .nav-tabs.active {
     left: 0;
   }

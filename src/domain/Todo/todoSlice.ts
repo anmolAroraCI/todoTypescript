@@ -4,8 +4,6 @@ import { TodoState } from "./types";
 
 const initialAllTodoState: TodoState = {
   allTodos: [],
-  showSearchResult: false,
-  searchTodo: [],
 };
 const todoSlice = createSlice({
   name: "todo",
@@ -19,12 +17,6 @@ const todoSlice = createSlice({
         (item) => item.id !== action.payload
       );
       state.allTodos = newArr;
-
-      // delete from searchTodo Array
-      const newArr2 = state.searchTodo.filter(
-        (item) => item.id !== action.payload
-      );
-      state.searchTodo = newArr2;
 
     },
     addFavourite(state, action: PayloadAction<string>) {
@@ -46,13 +38,6 @@ const todoSlice = createSlice({
         return todo;
       });
     },
-    toggleSearchResult(state) {
-      state.showSearchResult = !state.showSearchResult;
-    },
-    setSearchTodo(state, action) {
-      state.searchTodo = action.payload;
-    },
-    
   },
 });
 

@@ -8,6 +8,4 @@ export type Todo = {
 
 export type TodoState = {
   allTodos: Todo[];
-  searchTodo: Todo[];
-  showSearchResult: boolean;
 };
