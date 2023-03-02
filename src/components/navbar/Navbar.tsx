@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
-import Badge from "../Badge/badge";
+import Badge from "../Badge/Badge";
 import { favTodoselector, todoSelector } from "../../domain/Todo/todoSlice";
 
 const Navbar = () => {
